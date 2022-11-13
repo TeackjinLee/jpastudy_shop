@@ -1,4 +1,4 @@
-package com.example.jpastudy_shop;
+package com.example.jpastudy_shop.datasource;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
