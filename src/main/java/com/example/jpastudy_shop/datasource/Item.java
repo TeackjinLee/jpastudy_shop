@@ -1,11 +1,9 @@
 package com.example.jpastudy_shop.datasource;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "ITEM")
 public class Item {
     @Id
     @GeneratedValue
@@ -15,6 +13,14 @@ public class Item {
     private String name;        //이름
     private int price;          //가격
     private int stockQuantity;  //재고수량
+
+    // 생성자
+    public Item(Long id, String name, int price, int stockQuantity){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
 
     //Getter, Setter
 

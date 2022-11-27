@@ -1,11 +1,11 @@
 package com.example.jpastudy_shop.datasource;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "MEMBER")
 public class Member {
     @Id
     @GeneratedValue
@@ -13,13 +13,22 @@ public class Member {
     private Long id;
 
     private String name;
-
     private String city;
     private String street;
     private String zipcode;
 
-    //Getter, Setter
+    @OneToMany(mappedBy = "member")
+    private List<Orders> orders = new ArrayList<Orders>();
 
+    public Member(Long id, String name, String city, String street, String zipcode) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.street = street;
+        this.zipcode = zipcode;
+    }
+
+    //Getter, Setter
     public Long getId() {
         return id;
     }
@@ -58,5 +67,13 @@ public class Member {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 }
